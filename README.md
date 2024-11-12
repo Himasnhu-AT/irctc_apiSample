@@ -1,35 +1,29 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Train Booking API
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+A RESTful API built with NestJS for managing train bookings and reservations. The application provides user authentication, train management, and seat booking functionalities.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Features
 
-## Description
+- User authentication with JWT
+- Train management (add trains, check availability)
+- Seat booking with race condition handling
+- Role-based access control (Admin/User)
+- Secure email encryption
+- PostgreSQL database with Prisma ORM
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Prerequisites
+
+- Node.js (v14 or higher)
+- PostgreSQL
+- pnpm
 
 ## Installation
 
+1. Clone the repository
+2. Install dependencies:
+
 ```bash
-$ pnpm install
+pnpm install
 ```
 
 ## Running the app
@@ -71,3 +65,35 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](LICENSE).
+
+### Test Coverage
+
+```bash
+File                    | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s
+------------------------|---------|----------|---------|---------|--------------------
+All files               |   41.01 |    33.33 |   42.85 |   41.17 |
+ src                    |   34.21 |        0 |      75 |   28.12 |
+  app.controller.ts     |     100 |      100 |     100 |     100 |
+  app.module.ts         |       0 |      100 |     100 |       0 | 1-25
+  app.service.ts        |     100 |      100 |     100 |     100 |
+  main.ts               |       0 |        0 |       0 |       0 | 1-23
+ src/auth               |       0 |      100 |       0 |       0 |
+  get-user.decorator.ts |       0 |      100 |       0 |       0 | 1-6
+  jwt.strategy.ts       |       0 |      100 |       0 |       0 | 1-15
+ src/booking            |    37.5 |       50 |   44.44 |   38.23 |
+  booking.controller.ts |       0 |      100 |       0 |       0 | 1-28
+  booking.module.ts     |       0 |      100 |     100 |       0 | 1-11
+  booking.service.ts    |   71.42 |       50 |   66.66 |   68.42 | 23,54-73
+ src/prisma             |   31.25 |      100 |       0 |      25 |
+  prisma.module.ts      |       0 |      100 |     100 |       0 | 1-9
+  prisma.service.ts     |   45.45 |      100 |       0 |   33.33 | 15-25
+ src/train              |      25 |       25 |    37.5 |   23.33 |
+  train.controller.ts   |       0 |        0 |       0 |       0 | 1-56
+  train.module.ts       |       0 |      100 |     100 |       0 | 1-9
+  train.service.ts      |   64.28 |       50 |      60 |   58.33 | 30-46
+ src/user               |   62.66 |       50 |   55.55 |   65.21 |
+  user.controller.ts    |       0 |      100 |       0 |       0 | 1-14
+  user.module.ts        |       0 |      100 |     100 |       0 | 1-10
+  user.service.ts       |   81.03 |       50 |   83.33 |   80.35 | 64,106-109,127-133
+------------------------|---------|----------|---------|---------|--------------------
+```
