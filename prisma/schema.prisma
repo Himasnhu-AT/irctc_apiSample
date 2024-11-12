@@ -27,6 +27,8 @@ model Train {
   id          Int       @id @default(autoincrement())
   name        String
   description String?
+  source      String
+  destination String
   seats       Int
   Booking     Booking[]
 }
